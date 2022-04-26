@@ -10,7 +10,7 @@ RUN pip3 install apache-airflow-providers-apache-spark
 
 WORKDIR /root
 RUN airflow db init
-RUN airflow users create --username admin --firstname marcelok --lastname marcelok --role Admin --email mkenjis@gmail.com --password admsys123
+RUN airflow users create --username admin --firstname marcelok --lastname marcelok --role Admin --email mkenjis@gmail.com --password xxxxxx
 
 COPY run_airflow.sh .
 RUN chmod +x run_airflow.sh
