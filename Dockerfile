@@ -14,6 +14,10 @@ RUN airflow users create --username admin --firstname marcelok --lastname marcel
 
 COPY run_airflow.sh .
 RUN chmod +x run_airflow.sh
+
+COPY stop_airflow.sh .
+RUN chmod +x stop_airflow.sh
+
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 EXPOSE 8080
