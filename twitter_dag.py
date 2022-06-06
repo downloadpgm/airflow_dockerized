@@ -9,7 +9,8 @@ import requests
 import json
 from pathlib import Path
 
-bearer_token = "AAAAAAAAAAAAAAAAAAAAAMi1bQEAAAAAsCUQMuBQSdprVNY%2FITwYqOZDhjE%3Dl5DMnB7sleuJaj2Ig8SeFGOqpho3EWXIMuhjDvXu9Y32sWzXqn"
+# get this bearer token in Twitter developer portal https://developer.twitter.com/en/portal/dashboard
+bearer_token = "xxxx"
 headers = {"Authorization": "Bearer {}".format(bearer_token)}
 
 query = "AluraOnline"
