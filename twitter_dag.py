@@ -14,8 +14,9 @@ bearer_token = "xxxx"
 headers = {"Authorization": "Bearer {}".format(bearer_token)}
 
 query = "AluraOnline"
-tweet_fields = "tweet.fields=author_id,created_at,text"
-query_url = "https://api.twitter.com/2/tweets/search/recent?query={}&{}".format(query,tweet_fields)
+tweet_fields = "tweet.fields=author_id,conversation_id,created_at,id,in_reply_to_user_id,public_metrics,text"
+user_fields = "expansions=author_id&user.fields=id,name,username,created_at"
+query_url = "https://api.twitter.com/2/tweets/search/recent?query={}&{}&{}".format(query,tweet_fields,user_fields)
 output_file = "/tmp/alura/extract_date={{ ds }}/twitter_{{ ds_nodash }}.json"
 
 dag = DAG('twitter_retriever',
@@ -45,7 +46,7 @@ def print_tweets(url,file_name):
         for tweet_set in all_tweets:
             tweet_arr = tweet_set['data']
             for tweet in tweet_arr:
-                json.dump(tweet, _file, ensure_ascii=False)
+                json.dump(tweet, _file, ensure_ascii=True)
                 _file.write("\n")
 	
 t1 = PythonOperator(
